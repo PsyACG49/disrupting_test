@@ -4,18 +4,21 @@ import HomePage from "./pages/HomePage";
 import DetailsPage from "./pages/DetailsPage";
 import CarPage from "./pages/CarPage";
 import Layout from "./layouts/Layout";
+import { DataProvider } from "./context/dataContext";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route path="details/:product" element={<DetailsPage />} />
-          <Route path="car" element={<CarPage />} />
-        </Route>
-      </Routes>
-    </Router>
+    <DataProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<HomePage />} />
+            <Route path="details/:product" element={<DetailsPage />} />
+            <Route path="car" element={<CarPage />} />
+          </Route>
+        </Routes>
+      </Router>
+    </DataProvider>
   );
 }
 
