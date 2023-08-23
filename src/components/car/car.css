@@ -1,0 +1,27 @@
+.section__car {
+  width: 100%;
+  max-width: 1000px;
+  margin: 50px auto;
+}
+
+.section__car .car__title {
+  font-size: 3rem;
+  margin: 50px 0;
+  text-align: center;
+}
+
+.section__car .car__table {
+  width: 100%;
+}
+
+.car__table .table__head {
+  height: 70px;
+  background: var(--primary);
+  color: var(--white);
+}
+
+.section__car .car__total {
+  text-align: right;
+  margin-top: 50px;
+  font-size: 3rem;
+}

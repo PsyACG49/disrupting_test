@@ -1,7 +1,7 @@
-import React from "react";
+import Car from "../components/car/Car";
 
 const CarPage = () => {
-  return <div>CarPage</div>;
+  return <Car />;
 };
 
 export default CarPage;

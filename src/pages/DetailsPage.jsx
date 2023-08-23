@@ -1,7 +1,7 @@
-import React from "react";
+import ProductDetails from "../components/productDetails/ProductDetails";
 
 const DetailsPage = () => {
-  return <div>DetailsPage</div>;
+  return <ProductDetails />;
 };
 
 export default DetailsPage;
