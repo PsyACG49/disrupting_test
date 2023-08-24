@@ -1,5 +1,7 @@
 import ProductCard from "../productCard/ProductCard";
+
 import "./products.css";
+
 const Products = ({ data }) => {
   return (
     <section className="section__products">

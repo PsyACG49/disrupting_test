@@ -1,14 +1,17 @@
 import { useContext } from "react";
-import TableItem from "../tableItem/TableItem";
-import "./cart.css";
 import { cartContext } from "../../context/cartContext";
+import TableItem from "../tableItem/TableItem";
 
-const Car = ({ data }) => {
+import "./cart.css";
+
+const Cart = ({ data }) => {
   const { cart } = useContext(cartContext);
   const totalPrice = cart.reduce(
     (acc, curr) => acc + curr.count * curr.price,
     0
   );
+
+  localStorage.setItem("cart", JSON.stringify(cart));
   return (
     <section className="section__car">
       <h3 className="car__title">Check your Car</h3>
@@ -32,4 +35,4 @@ const Car = ({ data }) => {
   );
 };
 
-export default Car;
+export default Cart;

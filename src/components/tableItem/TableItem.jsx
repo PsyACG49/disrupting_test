@@ -1,8 +1,10 @@
 import { useContext } from "react";
-import "./tableItem.css";
 import { cartContext } from "../../context/cartContext";
+
+import "./tableItem.css";
+
 const TableItem = ({ infoItem }) => {
-  const { setCart } = useContext(cartContext);
+  const { setCart, cart } = useContext(cartContext);
   const { title, price, id, count } = infoItem;
   const currentAmount = count * price;
 
@@ -19,6 +21,7 @@ const TableItem = ({ infoItem }) => {
         });
       }
     });
+    localStorage.setItem("cart", JSON.stringify(cart));
   };
 
   const handleLessToCar = () => {
@@ -37,6 +40,7 @@ const TableItem = ({ infoItem }) => {
         });
       }
     });
+    localStorage.setItem("cart", JSON.stringify(cart));
   };
 
   return (

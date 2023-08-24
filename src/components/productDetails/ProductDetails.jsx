@@ -1,22 +1,37 @@
 import { useContext, useState } from "react";
-import "./productDetails.css";
+import { useNavigate } from "react-router-dom";
 import { cartContext } from "../../context/cartContext";
+
+import "./productDetails.css";
+
 const ProductDetails = ({ data }) => {
+  const navigate = useNavigate();
   const { image, title, description, price, id } = data;
   const { cart, setCart } = useContext(cartContext);
   const prevAdded = cart.find((el) => el.id === id);
   const [count, setCount] = useState(prevAdded ? prevAdded.count : 0);
 
   const handleAddCart = () => {
-    const filterData = cart.filter((el) => el.id !== id);
-    const toCart = {
-      id,
-      title,
-      price,
-      count,
-    };
-    setCart([...filterData, toCart]);
-    localStorage.setItem("cart", "hola");
+    if (prevAdded) {
+      setCart(
+        cart.map((el) => {
+          if (el.id === id) {
+            return { ...el, count };
+          } else {
+            return el;
+          }
+        })
+      );
+    } else {
+      const toCart = {
+        id,
+        title,
+        price,
+        count,
+      };
+      setCart([...cart, toCart]);
+    }
+    navigate("/car");
   };
   return (
     <section className="section__productDetails">

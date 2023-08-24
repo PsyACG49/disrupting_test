@@ -1,9 +1,9 @@
-import { BsCartFill } from "react-icons/bs";
-
-import "./header.css";
 import { Link } from "react-router-dom";
+import { BsCartFill } from "react-icons/bs";
 import { useContext } from "react";
 import { cartContext } from "../../context/cartContext";
+
+import "./header.css";
 
 const Header = () => {
   const { cart } = useContext(cartContext);
