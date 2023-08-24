@@ -54,3 +54,24 @@
   border-radius: 30px;
   cursor: pointer;
 }
+
+.details__count {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  gap: 5px;
+  font-size: 2rem;
+}
+
+.details__count .count__btn {
+  width: 30px;
+  height: 30px;
+  background: #909090;
+  color: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 2rem;
+  font-weight: 600;
+}

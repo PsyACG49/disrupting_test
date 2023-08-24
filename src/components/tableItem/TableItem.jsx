@@ -1,14 +1,64 @@
-import Count from "../count/Count";
+import { useContext } from "react";
 import "./tableItem.css";
-const TableItem = () => {
+import { cartContext } from "../../context/cartContext";
+const TableItem = ({ infoItem }) => {
+  const { setCart } = useContext(cartContext);
+  const { title, price, id, count } = infoItem;
+  const currentAmount = count * price;
+
+  const handleAddToCar = () => {
+    setCart((items) => {
+      const isFound = items.find((item) => item.id === id);
+      if (isFound) {
+        return items.map((item) => {
+          if (item.id === id) {
+            return { ...item, count: item.count + 1 };
+          } else {
+            return item;
+          }
+        });
+      }
+    });
+  };
+
+  const handleLessToCar = () => {
+    setCart((items) => {
+      const isFound = items.find((item) => item.id === id);
+      if (isFound) {
+        return items.map((item) => {
+          if (item.id === id) {
+            return {
+              ...item,
+              count: item.count - 1,
+            };
+          } else {
+            return item;
+          }
+        });
+      }
+    });
+  };
+
   return (
     <tr className="table__itemRow">
-      <td>Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops</td>
-      <td align="center">$109.95</td>
+      <td>{title}</td>
+      <td align="center">{`$${price.toFixed(2)}`}</td>
       <td align="center">
-        <Count />
+        <div className="details__count">
+          <button
+            className="count__btn"
+            disabled={count < 2 ? true : false}
+            onClick={handleLessToCar}
+          >
+            -
+          </button>
+          <span>{count}</span>
+          <button className="count__btn" onClick={handleAddToCar}>
+            +
+          </button>
+        </div>
       </td>
-      <td align="center">809.95</td>
+      <td align="center">{`$${currentAmount.toFixed(2)}`}</td>
     </tr>
   );
 };

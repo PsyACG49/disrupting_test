@@ -9,6 +9,10 @@ const DetailsPage = () => {
   const currentProduct = dataProducts.find(
     (el) => el.id === parseInt(product, 10)
   );
+
+  if (!currentProduct) {
+    return <div></div>;
+  }
   return <ProductDetails data={currentProduct} />;
 };
 

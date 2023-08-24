@@ -2,8 +2,15 @@ import { BsCartFill } from "react-icons/bs";
 
 import "./header.css";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { cartContext } from "../../context/cartContext";
 
 const Header = () => {
+  const { cart } = useContext(cartContext);
+  const countBadge = cart.reduce((acc, curr) => {
+    return acc + curr.count;
+  }, 0);
+
   return (
     <header className="section__header">
       <Link to="/">
@@ -11,7 +18,7 @@ const Header = () => {
       </Link>
       <Link to="/car" className="header__car">
         <div className="car__badge">
-          <span>2</span>
+          <span>{countBadge}</span>
         </div>
         <BsCartFill className="car__icon" />
       </Link>
